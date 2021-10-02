@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "511928079334",
+    "firebase_url": "https://englishquiz-b52bc-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "englishquiz-b52bc",
+    "storage_bucket": "englishquiz-b52bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511928079334:android:07ce288bf8421d11a3fc27",
+        "android_client_info": {
+          "package_name": "com.englishquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511928079334-1uo5tbo1j5m24kf93v52ti26ikcokb5h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.englishquiz",
+            "certificate_hash": "3c70ef75e90c3a086d90ca590c40bbf40dc6ad47"
+          }
+        },
+        {
+          "client_id": "511928079334-ucma43ctsi618fj3d40sj54njgc0n30h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3HvafOTFhbCqw9xE_PFkdYufV41rQ5-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511928079334-ucma43ctsi618fj3d40sj54njgc0n30h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
