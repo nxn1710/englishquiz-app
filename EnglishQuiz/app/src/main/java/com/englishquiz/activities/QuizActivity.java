@@ -30,16 +30,20 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         btn = findViewById(R.id.button4);
+        action();
+        Log.d(TAG, "Loading Quiz");
+        getData();
+
+    }
+    private void action(){
         Intent i = new Intent(this, QuizResultActivity.class);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(i);
             }
         });
-
-        Log.d(TAG, "Loading Quiz");
-        getData();
 
     }
 
@@ -49,9 +53,11 @@ public class QuizActivity extends AppCompatActivity {
         getExercise();
         getQuestion();
         getAnswer();
+        Log.d(TAG,"in");
     }
 
     private void getAnswer() {
+        Log.d(TAG,"chay");
         myRef.child("Answer").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,8 +69,9 @@ public class QuizActivity extends AppCompatActivity {
                     Answer a = new Answer(id, question, description, is_correct);
                     answers.add(a);
                 }
-                for (Answer answer: answers)
-                    Log.d(TAG,answer.toString());
+                Log.d(TAG,"chay xong");
+//                for (Answer answer: answers)
+//                    Log.d(TAG,answer.toString());
             }
 
             @Override
@@ -84,8 +91,8 @@ public class QuizActivity extends AppCompatActivity {
                     Question q = new Question(id, exercise, description, time);
                     questions.add(q);
                 }
-                for (Question question: questions)
-                    Log.d(TAG,question.toString());
+//                for (Question question: questions)
+//                    Log.d(TAG,question.toString());
             }
 
             @Override
@@ -105,8 +112,8 @@ public class QuizActivity extends AppCompatActivity {
                     Exercise e = new Exercise(id, title, description, time);
                     exercises.add(e);
                 }
-                for (Exercise exercise: exercises)
-                    Log.d(TAG, exercise.toString());
+//                for (Exercise exercise: exercises)
+//                    Log.d(TAG, exercise.toString());
             }
 
             @Override

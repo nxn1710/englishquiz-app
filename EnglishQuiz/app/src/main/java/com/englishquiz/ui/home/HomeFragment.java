@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         Intent i = new Intent(getContext(), QuizActivity.class);
-        binding.button3.setOnClickListener(new View.OnClickListener() {
+        binding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(i);
