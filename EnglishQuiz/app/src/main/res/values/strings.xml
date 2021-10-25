@@ -3,6 +3,25 @@
     <string name="title_home">Home</string>
     <string name="title_ranking">Ranking</string>
     <string name="title_profile">Profile</string>
+    <string name="ielts_sample_answer">IELTS Sample Answer</string>
+    <string name="ielts_preparation"><![CDATA[& IELTS Preparation]]></string>
+    <string name="hi_thuan">Hi Thuan</string>
     <string name="your_score">Your Score</string>
-    <string name="a2_elementary">A2 - Elementary</string>
+    <string name="txt_level">A2 - Elementary</string>
+    <string name="score">235</string>
+    <string name="grammar_score">Grammar - 326</string>
+    <string name="reading_score">Reading - 227</string>
+    <string name="vocabulary_score">Vocabulary - 209</string>
+    <string name="listening_score">Listening - 178</string>
+    <string name="txt_cefr">CEFR A2</string>
+    <string name="txt_ielts">IELTS 3.5</string>
+    <string name="take_the_test">Take the test</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="do_you_already_have_an_account_login">Do you already have an account? Login.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login">Login</string>
 </resources>
