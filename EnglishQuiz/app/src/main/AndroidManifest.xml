@@ -23,7 +23,9 @@
         <activity android:name=".activities.QuizActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.SignInActivity" />
-        <activity android:name=".MainActivity" android:label="@string/app_name" />
+        <activity android:name=".MainActivity" android:label="@string/app_name">
+
+        </activity>
 
     </application>
 

@@ -1,15 +1,27 @@
 package com.englishquiz.model;
 
+import java.util.ArrayList;
+
 public class Question {
     private String id;
     private String exercise;
     private String description;
+    private ArrayList<Answer> listOfAnswer;
     private String time;
 
     public Question(String id, String exercise, String description, String time) {
         this.id = id;
         this.exercise = exercise;
         this.description = description;
+        this.listOfAnswer = new ArrayList<>();
+        this.time = time;
+    }
+
+    public Question(String id, String exercise, String description, ArrayList<Answer> listOfAnswer, String time) {
+        this.id = id;
+        this.exercise = exercise;
+        this.description = description;
+        this.listOfAnswer = listOfAnswer;
         this.time = time;
     }
 
@@ -35,6 +47,14 @@ public class Question {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ArrayList<Answer> getListOfAnswer() {
+        return listOfAnswer;
+    }
+
+    public void setListOfAnswer(ArrayList<Answer> listOfAnswer) {
+        this.listOfAnswer = listOfAnswer;
     }
 
     public String getTime() {

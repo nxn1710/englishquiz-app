@@ -1,12 +1,20 @@
 package com.englishquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
+
+import com.englishquiz.adapter.ViewPagerAdapterForQuestion;
 import com.englishquiz.model.*;
 import com.englishquiz.R;
 import com.google.firebase.database.DataSnapshot;
@@ -25,12 +33,46 @@ public class QuizActivity extends AppCompatActivity {
     private ArrayList<Question> questions = new ArrayList<>();
     private ArrayList<Exercise> exercises = new ArrayList<>();
     String TAG = "895";
+    private ViewPager2 viewPagerQuestions;
+    private ProgressBar loadQuestionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        getData();
         btn = findViewById(R.id.button4);
+        viewPagerQuestions = findViewById(R.id.viewpager_questions);
+        loadQuestionBar = findViewById(R.id.load_questioin_bar);
+        action();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadQuestionBar.setVisibility(View.GONE);
+                setAnsForQus();
+                ViewPagerAdapterForQuestion myAdapter = new ViewPagerAdapterForQuestion(getApplicationContext(),questions);
+                viewPagerQuestions.setAdapter(myAdapter);
+            }
+        }, 2000);
+
+    }
+
+    private void setAnsForQus() {
+        for (int i = 0; i < answers.size(); i++) {
+            for (int j = 0; j < questions.size(); j++ ){
+                if (answers.get(i).getQuestion().equals(questions.get(j).getId())){
+                    questions.get(j).getListOfAnswer().add(answers.get(i));
+                }
+            }
+        }
+        for (int i = 0; i < questions.size(); i++) {
+            Log.e("895",questions.get(i).getId() +"/"+questions.get(i).getListOfAnswer().size());
+        }
+    }
+
+    private void action(){
         Intent i = new Intent(this, QuizResultActivity.class);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,8 +80,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        Log.d(TAG, "Loading Quiz");
-        getData();
 
     }
 
@@ -49,9 +89,11 @@ public class QuizActivity extends AppCompatActivity {
         getExercise();
         getQuestion();
         getAnswer();
+        Log.d(TAG,"in");
     }
 
     private void getAnswer() {
+        Log.d(TAG,"chay");
         myRef.child("Answer").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,8 +105,9 @@ public class QuizActivity extends AppCompatActivity {
                     Answer a = new Answer(id, question, description, is_correct);
                     answers.add(a);
                 }
-                for (Answer answer: answers)
-                    Log.d(TAG,answer.toString());
+                Log.d(TAG,"chay xong");
+//                for (Answer answer: answers)
+//                    Log.d(TAG,answer.toString());
             }
 
             @Override
@@ -84,8 +127,8 @@ public class QuizActivity extends AppCompatActivity {
                     Question q = new Question(id, exercise, description, time);
                     questions.add(q);
                 }
-                for (Question question: questions)
-                    Log.d(TAG,question.toString());
+//                for (Question question: questions)
+//                    Log.d(TAG,question.toString());
             }
 
             @Override
@@ -105,13 +148,21 @@ public class QuizActivity extends AppCompatActivity {
                     Exercise e = new Exercise(id, title, description, time);
                     exercises.add(e);
                 }
-                for (Exercise exercise: exercises)
-                    Log.d(TAG, exercise.toString());
+//                for (Exercise exercise: exercises)
+//                    Log.d(TAG, exercise.toString());
             }
 
             @Override
             public void onCancelled(DatabaseError error) {}
         });
+    }
+
+    private void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
 
