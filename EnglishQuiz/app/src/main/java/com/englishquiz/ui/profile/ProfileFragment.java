@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.englishquiz.activities.AboutUsActivity;
 import com.englishquiz.activities.EditProfileActivity;
+import com.englishquiz.activities.SignInActivity;
 import com.englishquiz.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
@@ -28,17 +29,24 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Intent i1 = new Intent(getContext(), EditProfileActivity.class);
-        binding.button8.setOnClickListener(new View.OnClickListener() {
+        binding.btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(i1);
             }
         });
         Intent i2 = new Intent(getContext(), AboutUsActivity.class);
-        binding.button9.setOnClickListener(new View.OnClickListener() {
+        binding.btnAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(i2);
+            }
+        });
+        Intent i3 = new Intent(getContext(), SignInActivity.class);
+        binding.btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(i3);
             }
         });
         return root;
