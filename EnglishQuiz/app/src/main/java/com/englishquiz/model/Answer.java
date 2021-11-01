@@ -13,6 +13,12 @@ public class Answer {
         this.is_correct = is_correct;
     }
 
+    public Answer(String question, String description, String is_correct) {
+        this.question = question;
+        this.description = description;
+        this.is_correct = is_correct;
+    }
+
     public String getId() {
         return id;
     }
