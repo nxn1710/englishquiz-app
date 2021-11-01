@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="grey">#F0F0F0</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="your_score">#DAD1E4</color>
+    <color name="progressbar">#c1ffc8</color>
+    <color name="background_common">#AE74EC</color>
 </resources>
