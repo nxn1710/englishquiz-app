@@ -14,7 +14,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.englishquiz.DAO.ExerciseDAO;
 import com.englishquiz.adapter.ViewPagerAdapterForQuestion;
+import com.englishquiz.callBacks.ExerciseCallBack;
 import com.englishquiz.model.*;
 import com.englishquiz.R;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import com.englishquiz.DAO.ExerciseDAO;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
     Button btn;
@@ -32,6 +35,7 @@ public class QuizActivity extends AppCompatActivity {
     private ArrayList<Answer> answers = new ArrayList<>();
     private ArrayList<Question> questions = new ArrayList<>();
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    private HashMap<String,Exercise> exerciseHashMap = new HashMap<>();
     String TAG = "895";
     private ViewPager2 viewPagerQuestions;
     private ProgressBar loadQuestionBar;
@@ -65,9 +69,9 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         }
-        for (int i = 0; i < questions.size(); i++) {
-            Log.e("895",questions.get(i).getId() +"/"+questions.get(i).getListOfAnswer().size());
-        }
+//        for (int i = 0; i < questions.size(); i++) {
+//            Log.e("895",questions.get(i).getId() +"/"+questions.get(i).getListOfAnswer().size());
+//        }
     }
 
     private void action(){
@@ -136,24 +140,17 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-    private void getExercise() {
-        myRef.child("Exercise").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    String id = snapshot.child("id").getValue().toString();
-                    String title = snapshot.child("title").getValue().toString();
-                    String description = snapshot.child("description").getValue().toString();
-                    String time = snapshot.child("time").getValue().toString();
-                    Exercise e = new Exercise(id, title, description, time);
-                    exercises.add(e);
-                }
-//                for (Exercise exercise: exercises)
-//                    Log.d(TAG, exercise.toString());
-            }
 
+    private void getExercise() {
+        ExerciseDAO dao = new ExerciseDAO();
+        dao.getExercise(new ExerciseCallBack() {
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCallbackExercise(HashMap<String, Exercise> value) {
+                exerciseHashMap = value;
+                for (Exercise item : exerciseHashMap.values()) {
+                    exercises.add(item);
+                }
+            }
         });
     }
 
