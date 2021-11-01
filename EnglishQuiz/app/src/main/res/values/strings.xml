@@ -3,6 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_ranking">Ranking</string>
     <string name="title_profile">Profile</string>
+    <string name="ielts_sample_answer">IELTS Sample Answer</string>
+    <string name="ielts_preparation"><![CDATA[& IELTS Preparation]]></string>
+    <string name="hi_thuan">Hi Thuan</string>
     <string name="your_score">Your Score</string>
     <string name="txt_level">A2 - Elementary</string>
     <string name="score">235</string>
@@ -33,5 +36,4 @@
     <string name="career">Student</string>
     <string name="infor"><![CDATA[Các loại câu hỏi trên Quiz được thiết kế tỉ mỉ để giúp bạn học tập hiệu quả. Khi bạn trả lời các câu hỏi tự luận từ bộ nhớ (thay vì sao chép đáp án), điều này đòi hỏi bạn nỗ lực truy hồi hoặc "nhớ lại", qua đó thực sự giúp bạn học kiến thức. Câu hỏi trắc nghiệm được thiết kế để giúp bạn đi qua nhiều câu hỏi hơn trong thời gian ngắn hơn, với điểm cộng là giúp bạn tìm hiểu các lựa chọn sai. Nếu bạn học với thẻ ghi nhớ hoặc câu hỏi trắc nghiệm, hãy cố gắng nhớ lại câu trả lời đúng trước khi bạn xem đáp án!]]></string>
     <string name="infor1"><![CDATA[Bạn càng thực hành việc nhớ lại một thông tin hoặc truy hồi nó từ bộ nhớ, bạn càng có khả năng ghi nhớ nó về sau. Phát hiện tâm lý này giải thích lý do tại sao việc học bằng thẻ ghi nhớ hoặc bằng cách làm bài kiểm tra thử sẽ hiệu quả hơn nhiều so với việc chỉ xem các ghi chú của bạn cho đến khi bạn cảm thấy mình đã biết. Nhận phản hồi giúp tăng hiệu quả hơn nữa. Các công cụ học tập của Quizlet được thiết kế để giúp bạn tối đa hóa lợi ích của thực hành truy hồi. Hãy tiếp tục thực hành truy hồi, ngay cả sau khi bạn trả lời đúng một câu hỏi vào lần đầu!]]></string>
-
 </resources>
