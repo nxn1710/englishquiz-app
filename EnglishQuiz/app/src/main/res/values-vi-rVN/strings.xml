@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">EnglishQuiz</string>
-    <string name="title_home">Trang Chủ</string>
-    <string name="title_ranking">Xếp Hạng</string>
-    <string name="title_profile">Thông Tin</string>
-    <string name="your_score">Điểm</string>
-    <string name="a2_elementary">A2_elementary</string>
-</resources>

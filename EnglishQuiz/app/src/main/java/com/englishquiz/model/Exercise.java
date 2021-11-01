@@ -13,6 +13,12 @@ public class Exercise {
         this.time = time;
     }
 
+    public Exercise(String title, String description, String time) {
+        this.title = title;
+        this.description = description;
+        this.time = time;
+    }
+
     public String getId() {
         return id;
     }
