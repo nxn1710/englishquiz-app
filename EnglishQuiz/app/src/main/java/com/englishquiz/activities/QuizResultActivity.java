@@ -1,6 +1,7 @@
 package com.englishquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +12,13 @@ import com.englishquiz.MainActivity;
 import com.englishquiz.R;
 
 public class QuizResultActivity extends AppCompatActivity {
-    Button btn1, btn2;
+    CardView btn1, btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_result);
-        btn1 = findViewById(R.id.button6);
-        btn2 = findViewById(R.id.button5);
+        btn1 = findViewById(R.id.btnReview);
+        btn2 = findViewById(R.id.btnHome);
         Intent i1 = new Intent(this, ReviewActivity.class);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
