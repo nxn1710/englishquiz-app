@@ -284,6 +284,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnHome"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
@@ -320,6 +321,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnReview"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
