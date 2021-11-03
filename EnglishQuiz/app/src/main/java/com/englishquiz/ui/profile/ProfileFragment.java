@@ -2,6 +2,7 @@ package com.englishquiz.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.englishquiz.activities.AboutUsActivity;
 import com.englishquiz.activities.EditProfileActivity;
 import com.englishquiz.activities.SignInActivity;
 import com.englishquiz.databinding.FragmentProfileBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
 
@@ -25,7 +27,6 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Intent i1 = new Intent(getContext(), EditProfileActivity.class);
@@ -46,6 +47,7 @@ public class ProfileFragment extends Fragment {
         binding.btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 startActivity(i3);
             }
         });
