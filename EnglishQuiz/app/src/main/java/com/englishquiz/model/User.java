@@ -26,10 +26,10 @@ public class User {
         this.career = career;
     }
 
-    public User(String username, String mail, String password, String score_max, String first_name, String last_name, String national, String career) {
+    public User(String id, String username, String mail, String score_max, String first_name, String last_name, String national, String career) {
+        this.id = id;
         this.username = username;
         this.mail = mail;
-        this.password = password;
         this.score_max = score_max;
         this.first_name = first_name;
         this.last_name = last_name;

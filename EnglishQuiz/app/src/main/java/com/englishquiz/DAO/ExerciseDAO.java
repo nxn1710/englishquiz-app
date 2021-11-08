@@ -2,6 +2,7 @@ package com.englishquiz.DAO;
 
 import android.util.Log;
 
+import com.englishquiz.constant.Constant;
 import com.englishquiz.model.Exercise;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +20,7 @@ public class ExerciseDAO {
     HashMap<String, Exercise> exercises = new HashMap<>();
     public void getExercise( ExerciseCallBack myCallback) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("TestWeb");
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE);
         myRef.child("Exercise").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -14,7 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.englishquiz.DAO.UserDAO;
 import com.englishquiz.R;
+import com.englishquiz.callBacks.UserCallBack;
+import com.englishquiz.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -132,7 +135,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     .show();
 
                             // if the user created intent to login activity
-                            Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                            Intent i = new Intent(getApplicationContext(), EditProfileActivity.class);
                             startActivity(i);
                         }
                         else {
