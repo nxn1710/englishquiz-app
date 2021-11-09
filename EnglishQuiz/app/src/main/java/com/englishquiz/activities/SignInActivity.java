@@ -59,8 +59,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
 
-    private void loginUserAccount()
-    {
+    private void loginUserAccount() {
         String email, password;
         email = edtEmail.getText().toString();
         password = edtPassword.getText().toString();
@@ -87,15 +86,15 @@ public class SignInActivity extends AppCompatActivity {
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(
-                                    @NonNull Task<AuthResult> task)
-                            {
+                                    @NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.e("TAG", "onComplete: Failed=" + task.getException().getMessage());
+                                }
                                 if (task.isSuccessful()) {
                                     // if sign-in is successful
                                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(i);
-                                }
-
-                                else {
+                                } else {
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
                                             "Login failed!!",

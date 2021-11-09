@@ -31,56 +31,55 @@ public class UserDAO {
     }
 
     public void getUser(UserCallBack myCallback) throws InterruptedException {
-        myRef.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String id = snapshot.child("id").getValue().toString();
-                String username = snapshot.child("username").getValue().toString();
-                String mail = snapshot.child("mail").getValue().toString();
-                String score_max = snapshot.child("score_max").getValue().toString();
-                String first_name = snapshot.child("first_name").getValue().toString();
-                String last_name = snapshot.child("last_name").getValue().toString();
-                String national = snapshot.child("national").getValue().toString();
-                String career = snapshot.child("career").getValue().toString();
-                user = new User(id, username, mail, score_max, first_name, last_name, national, career);
-                myCallback.onCallbackUser(user);
-            }
+        try{
+            myRef.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String id = snapshot.child("id").getValue().toString();
+                    String username = snapshot.child("username").getValue().toString();
+                    String mail = snapshot.child("mail").getValue().toString();
+                    String score_max = snapshot.child("score_max").getValue().toString();
+                    String first_name = snapshot.child("first_name").getValue().toString();
+                    String last_name = snapshot.child("last_name").getValue().toString();
+                    String national = snapshot.child("national").getValue().toString();
+                    String career = snapshot.child("career").getValue().toString();
+                    user = new User(id, username, mail, score_max, first_name, last_name, national, career);
+                    myCallback.onCallbackUser(user);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }catch (Exception e){
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        }
     }
 
     public void updateUser(User user) {
-        myRef.child("User").push().setValue(user).addOnSuccessListener((Executor) this, new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void mVoid) {
-                Log.e("TAG", "Update success!!");
-            }
-        });
+        myRef.child("User").child(user.getId()).setValue(user);
     }
 
     public void addUserProfileFirstTime(User user) {
-        myRef.child("User").addValueEventListener(new ValueEventListener() {
+        myRef.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String id = (snapshot.getChildrenCount() + 1) + "";
-
+                Log.e("TAG", "onClick: 34" );
                 //set displayName for authentication
                 FirebaseUser userAuth = FirebaseAuth.getInstance().getCurrentUser();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(id).build();
                 userAuth.updateProfile(profileUpdates);
-
+                user.setId(id);
+                user.setScore_max("0");
                 updateUser(user);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        }
+        );
     }
 
 

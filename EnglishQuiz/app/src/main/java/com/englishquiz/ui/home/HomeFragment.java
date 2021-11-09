@@ -13,20 +13,54 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.englishquiz.DAO.BaseDAO;
+import com.englishquiz.DAO.UserDAO;
 import com.englishquiz.R;
 import com.englishquiz.activities.QuizActivity;
 import com.englishquiz.activities.SignInActivity;
+import com.englishquiz.callBacks.BaseCallBack;
+import com.englishquiz.callBacks.UserCallBack;
 import com.englishquiz.databinding.FragmentHomeBinding;
+import com.englishquiz.model.Base;
+import com.englishquiz.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    UserDAO userDao = new UserDAO();
+    BaseDAO baseDAO = new BaseDAO();
+    User currentUser;
+    List<Base> baseList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        baseDAO.getBases(new BaseCallBack() {
+            @Override
+            public void onCallBackBases(List<Base> base) {
+                baseList = base;
+            }
+        });
+
+        try {
+            userDao.getUser(new UserCallBack() {
+                @Override
+                public void onCallbackUser(User user) {
+                    currentUser = user;
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+//        binding.txtHi.setText("Hi " + currentUser.getFirst_name());
+//        binding.score.setText(currentUser.getScore_max());
 
         Intent i = new Intent(getContext(), QuizActivity.class);
         binding.btnTakeTheTest.setOnClickListener(new View.OnClickListener() {
