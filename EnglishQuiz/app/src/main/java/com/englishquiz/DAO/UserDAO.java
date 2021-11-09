@@ -46,7 +46,6 @@ public class UserDAO {
                     user = new User(id, username, mail, score_max, first_name, last_name, national, career);
                     myCallback.onCallbackUser(user);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
@@ -55,24 +54,6 @@ public class UserDAO {
 
         }
     }
-
-//    public void updateUser(User user) {
-//        Log.e("TAG", "onClick: 3" );
-//        myRef.child("User").child(user.getId()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                user.setScore_max("0");
-//                myRef.child("User").child(user.getId()).setValue(user);
-//                Log.e("TAG", "onClick: 4" );
-//                return;
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
     public void updateUser(User user) {
         myRef.child("User").child(user.getId()).setValue(user);
