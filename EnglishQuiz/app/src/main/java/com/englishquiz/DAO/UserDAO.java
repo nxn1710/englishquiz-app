@@ -56,44 +56,49 @@ public class UserDAO {
         }
     }
 
+//    public void updateUser(User user) {
+//        Log.e("TAG", "onClick: 3" );
+//        myRef.child("User").child(user.getId()).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                user.setScore_max("0");
+//                myRef.child("User").child(user.getId()).setValue(user);
+//                Log.e("TAG", "onClick: 4" );
+//                return;
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+
     public void updateUser(User user) {
-        myRef.child("User").child(user.getId()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                myRef.child("User").child(user.getId()).setValue(user);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        myRef.child("User").child(user.getId()).setValue(user);
     }
 
     public void addUserProfileFirstTime(User user) {
-        myRef.child("User").addValueEventListener(new ValueEventListener() {
+        myRef.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String id = (snapshot.getChildrenCount() + 1) + "";
-
+                Log.e("TAG", "onClick: 34" );
                 //set displayName for authentication
                 FirebaseUser userAuth = FirebaseAuth.getInstance().getCurrentUser();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(id).build();
                 userAuth.updateProfile(profileUpdates);
-                Log.e("TAG", "onDataChange: " + id );
-
                 user.setId(id);
-
+                user.setScore_max("0");
                 updateUser(user);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        }
+        );
     }
 
 

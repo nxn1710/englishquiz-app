@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.englishquiz.DAO.UserDAO;
+import com.englishquiz.MainActivity;
 import com.englishquiz.R;
 import com.englishquiz.callBacks.UserCallBack;
 import com.englishquiz.databinding.FragmentProfileBinding;
@@ -25,11 +26,11 @@ import java.util.Objects;
 
 public class EditProfileActivity extends AppCompatActivity {
     ImageView btn;
-    Button btn2, btnFinish;
+    Button btnFinish;
     EditText editTxtUsername, editTxtEmail, editTxtFirstname, editTxtLastname, editTxtNational, editTxtCareer;
 
     UserDAO dao = new UserDAO();
-    boolean flag = false;
+    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,7 @@ public class EditProfileActivity extends AppCompatActivity {
         editTxtLastname = findViewById(R.id.editTxtLastname);
         editTxtNational = findViewById(R.id.editTxtNational);
         editTxtCareer = findViewById(R.id.editTxtCareer);
-
         btnFinish = findViewById(R.id.btnFinish);
-
 
         try {
             dao.getUser(new UserCallBack() {
@@ -58,13 +57,14 @@ public class EditProfileActivity extends AppCompatActivity {
                         editTxtNational.setText(user.getNational());
                         editTxtCareer.setText(user.getCareer());
                         flag = true;
+                    } else {
+                        flag = false;
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         btn = findViewById(R.id.btnBack);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,43 +73,42 @@ public class EditProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-//        btn2 = findViewById(R.id.btnFinish);
-//        btn2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
 
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                            if (flag == false) {
-                                dao.addUserProfileFirstTime(new User(editTxtUsername.getText().toString(),
-                                        editTxtEmail.getText().toString(), editTxtFirstname.getText().toString(),
+                if (flag == false) {
+                    dao.addUserProfileFirstTime(new User(editTxtUsername.getText().toString(),
+                            editTxtEmail.getText().toString(), editTxtFirstname.getText().toString(),
+                            editTxtLastname.getText().toString(), editTxtNational.getText().toString(),
+                            editTxtCareer.getText().toString()));
+
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                } else {
+                    try {
+                        dao.getUser(new UserCallBack() {
+                            @Override
+                            public void onCallbackUser(User user) {
+                                User newUser = new User(user.getId(), editTxtUsername.getText().toString(),
+                                        editTxtEmail.getText().toString(), user.getPassword(), user.getScore_max(), editTxtFirstname.getText().toString(),
                                         editTxtLastname.getText().toString(), editTxtNational.getText().toString(),
-                                        editTxtCareer.getText().toString()));
-
-                            } else {
-                                try {
-                                    dao.getUser(new UserCallBack() {
-                                        @Override
-                                        public void onCallbackUser(User user) {
-                                            dao.updateUser(user);
-                                        }
-                                    });
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-
+                                        editTxtCareer.getText().toString());
+                                dao.updateUser(newUser);
+                                onBackPressed();
                             }
-                            flag  = true;
-                            Toast.makeText(getApplicationContext(),
-                                    "Update profile success!!",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-                        }
-                    });
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Toast.makeText(getApplicationContext(),
+                        "Update profile success!!",
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
     }
 }

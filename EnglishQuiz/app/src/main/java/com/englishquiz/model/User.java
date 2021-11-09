@@ -47,6 +47,16 @@ public class User {
         this.career = career;
     }
 
+    public User(String id, String username, String mail, String first_name, String last_name, String national, String career) {
+        this.id = id;
+        this.username = username;
+        this.mail = mail;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.national = national;
+        this.career = career;
+    }
+
     public String getId() {
         return id;
     }
