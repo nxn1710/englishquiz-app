@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.englishquiz.DAO.Answer_DoneDAO;
+import com.englishquiz.DAO.Pre_ExerciseDAO;
 import com.englishquiz.R;
+import com.englishquiz.model.Answer_done;
+import com.englishquiz.model.Pre_Exercise;
 
 public class SignUpActivity extends AppCompatActivity {
 

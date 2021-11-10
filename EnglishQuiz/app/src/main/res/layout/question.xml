@@ -90,8 +90,8 @@
                 android:layout_height="match_parent"
 
                 android:divider="@null"
-                android:dividerHeight="30dp"
-                android:layout_marginTop="10dp" />
+                android:dividerHeight="15dp"
+                android:layout_marginTop="30dp" />
 
 
         </LinearLayout>
@@ -149,10 +149,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-
         android:layout_gravity="center"
         android:background="@drawable/ic_rectangle_2"
         android:letterSpacing="0.1"
