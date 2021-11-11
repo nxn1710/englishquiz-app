@@ -15,9 +15,8 @@ public class User {
     }
 
 
-    public User(String username, String mail, String first_name, String last_name, String national, String career) {
+    public User(String username, String first_name, String last_name, String national, String career) {
         this.username = username;
-        this.mail = mail;
         this.first_name = first_name;
         this.last_name = last_name;
         this.national = national;

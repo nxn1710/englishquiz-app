@@ -32,7 +32,7 @@ public class UserDAO {
 
     public void getUser(UserCallBack myCallback) throws InterruptedException {
         try{
-            myRef.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).addValueEventListener(new ValueEventListener() {
+            myRef.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String id = snapshot.child("id").getValue().toString();
@@ -57,6 +57,15 @@ public class UserDAO {
 
     public void updateUser(User user) {
         myRef.child("User").child(user.getId()).setValue(user);
+        try {
+            getUser(new UserCallBack() {
+                @Override
+                public void onCallbackUser(User user) {
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addUserProfileFirstTime(User user) {
@@ -64,12 +73,12 @@ public class UserDAO {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String id = (snapshot.getChildrenCount() + 1) + "";
-                Log.e("TAG", "onClick: 34" );
                 //set displayName for authentication
                 FirebaseUser userAuth = FirebaseAuth.getInstance().getCurrentUser();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(id).build();
                 userAuth.updateProfile(profileUpdates);
+                user.setMail(userAuth.getEmail());
                 user.setId(id);
                 user.setScore_max("0");
                 updateUser(user);
