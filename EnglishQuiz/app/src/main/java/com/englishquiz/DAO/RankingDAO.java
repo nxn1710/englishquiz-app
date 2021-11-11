@@ -33,7 +33,7 @@ public class RankingDAO {
     }
 
     public void getRanking(RankingCallBack myCallback) throws InterruptedException {
-        myRef.child("Ranking").addValueEventListener(new ValueEventListener() {
+        myRef.child("Ranking").orderByChild("position").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("E", "onDataChange: " + dataSnapshot.getChildrenCount() );
