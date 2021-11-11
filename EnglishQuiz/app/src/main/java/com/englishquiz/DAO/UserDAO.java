@@ -61,7 +61,6 @@ public class UserDAO {
             getUser(new UserCallBack() {
                 @Override
                 public void onCallbackUser(User user) {
-                    Log.e("TAG123", user.toString() );
                 }
             });
         } catch (InterruptedException e) {
@@ -74,7 +73,6 @@ public class UserDAO {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String id = (snapshot.getChildrenCount() + 1) + "";
-                Log.e("TAG", "onClick: 34" );
                 //set displayName for authentication
                 FirebaseUser userAuth = FirebaseAuth.getInstance().getCurrentUser();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
