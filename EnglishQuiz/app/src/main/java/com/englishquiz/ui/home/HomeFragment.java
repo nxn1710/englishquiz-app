@@ -2,6 +2,8 @@ package com.englishquiz.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.englishquiz.DAO.UserDAO;
 import com.englishquiz.R;
 import com.englishquiz.activities.QuizActivity;
 import com.englishquiz.activities.SignInActivity;
+import com.englishquiz.adapter.ViewPagerAdapterForQuestion;
 import com.englishquiz.callBacks.BaseCallBack;
 import com.englishquiz.callBacks.UserCallBack;
 import com.englishquiz.databinding.FragmentHomeBinding;
@@ -32,7 +35,6 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     UserDAO userDao = new UserDAO();
     BaseDAO baseDAO = new BaseDAO();
-    User currentUser;
     List<Base> baseList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,6 +42,18 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        try {
+            userDao.getUser(new UserCallBack() {
+                @Override
+                public void onCallbackUser(User user) {
+                            binding.txtHi.setText("Hi " + user.getFirst_name());
+                            binding.score.setText(user.getScore_max());
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         baseDAO.getBases(new BaseCallBack() {
             @Override
@@ -48,19 +62,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        try {
-            userDao.getUser(new UserCallBack() {
-                @Override
-                public void onCallbackUser(User user) {
-                    currentUser = user;
-                }
-            });
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-//        binding.txtHi.setText("Hi " + currentUser.getFirst_name());
-//        binding.score.setText(currentUser.getScore_max());
 
         Intent i = new Intent(getContext(), QuizActivity.class);
         binding.btnTakeTheTest.setOnClickListener(new View.OnClickListener() {
