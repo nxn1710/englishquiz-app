@@ -24,6 +24,7 @@ public class AnswerDAO {
         myRef.child("Answer").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String id = snapshot.child("id").getValue().toString();
                     String question = snapshot.child("question").getValue().toString();

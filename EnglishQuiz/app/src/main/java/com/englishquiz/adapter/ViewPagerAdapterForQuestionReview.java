@@ -2,10 +2,7 @@ package com.englishquiz.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +10,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerAdapter;
 
 import com.englishquiz.DAO.Answer_DoneDAO;
 import com.englishquiz.R;
@@ -28,35 +21,37 @@ import com.englishquiz.model.Answer_done;
 import com.englishquiz.model.Question;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class ViewPagerAdapterForQuestion extends RecyclerView.Adapter<ViewPagerAdapterForQuestion.ViewHolder> {
+public class ViewPagerAdapterForQuestionReview extends RecyclerView.Adapter<ViewPagerAdapterForQuestionReview.ViewHolder> {
     private Context context;
     private ArrayList<Question> modelArrayList;
+    private ArrayList<Answer_done> UserAnswerList;
     private Integer pre_index=-1;
     private String UserID="1";
     Answer_DoneDAO answer_doneDAO = new Answer_DoneDAO();
     Answer_done a;
-    public ViewPagerAdapterForQuestion(Context context, ArrayList<Question> modelArrayList) {
+    public ViewPagerAdapterForQuestionReview(Context context, ArrayList<Question> modelArrayList, ArrayList<Answer_done> UserAnswerList) {
         this.context = context;
         this.modelArrayList = modelArrayList;
+        this.UserAnswerList = UserAnswerList;
     }
 
     @NonNull
     @Override
-    public ViewPagerAdapterForQuestion.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewPagerAdapterForQuestionReview.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question, parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewPagerAdapterForQuestion.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ViewPagerAdapterForQuestionReview.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Question question = modelArrayList.get(position);
+        Answer_done answer_done = UserAnswerList.get(position);
         holder.questionIndex1.setText(position+1+"");
         holder.questionIndex2.setText(position+1+"");
         holder.questionTotal.setText("/"+modelArrayList.size());
         holder.questionContent.setText(question.getDescription());
-        ListViewAdapterForAnswer adapter = new ListViewAdapterForAnswer(context, question.getListOfAnswer());
+        ListViewAdapterForAnswerReview adapter = new ListViewAdapterForAnswerReview(context, question.getListOfAnswer(), answer_done);
         adapter.notifyDataSetChanged();
         holder.listOfAnswer.setAdapter(adapter);
         Integer i=0;

@@ -42,17 +42,14 @@ public class QuizActivity extends AppCompatActivity {
     private ArrayList<Answer> answers = new ArrayList<>();
     private ArrayList<Question> questions = new ArrayList<>();
     private ArrayList<Exercise> exercises = new ArrayList<>();
-    private ArrayList<Answer_done> answer_dones = new ArrayList<>();
     private HashMap<String,Exercise> exerciseHashMap = new HashMap<>();
     private HashMap<String,Question> questionHashMap = new HashMap<>();
     private HashMap<String,Answer> answerHashMap = new HashMap<>();
-    private HashMap<String,Answer_done> answer_doneHashMap = new HashMap<>();
     private ViewPager2 viewPagerQuestions;
     private ProgressBar loadQuestionBar;
     String TAG = "895";
     String UserID="1";
     Boolean submit=false;
-    Integer score=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,13 +80,12 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
     private void action(){
-        //Intent i = new Intent(this, QuizResultActivity.class);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(i);
                 Integer index = viewPagerQuestions.getCurrentItem();
                 if (!submit) {
                     if (index < questions.size() - 1) {
@@ -100,19 +96,17 @@ public class QuizActivity extends AppCompatActivity {
                         submit = true;
                     }
                 }else{
-                    getAnswer_done();
+                    Intent i = new Intent(getApplicationContext(),QuizResultActivity.class);
+                    startActivity(i);
                 }
             }
         });
 
     }
     private void getData(){
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("TestWeb");
         getExercise();
         getQuestion();
         getAnswer();
-        Log.d(TAG,"in");
     }
     private void getAnswer() {
         AnswerDAO dao = new AnswerDAO();
@@ -123,6 +117,7 @@ public class QuizActivity extends AppCompatActivity {
                 for (Answer item : answerHashMap.values()) {
                     answers.add(item);
                 }
+                Log.e("895","Ans Size"+questionHashMap.size());
             }
         });
     }
@@ -136,6 +131,7 @@ public class QuizActivity extends AppCompatActivity {
                 for (Question item : questionHashMap.values()) {
                     questions.add(item);
                 }
+                Log.e("895","Questions Size"+questionHashMap.size());
             }
         });
     }
@@ -148,27 +144,11 @@ public class QuizActivity extends AppCompatActivity {
                 for (Exercise item : exerciseHashMap.values()) {
                     exercises.add(item);
                 }
+                Log.e("895","Ex Size"+questionHashMap.size());
             }
         });
     }
-    private void getAnswer_done() {
-        score=0;
-        Answer_DoneDAO dao = new Answer_DoneDAO();
-        dao.getAnswer_done(new Answer_doneCallBack() {
-            @Override
-            public void onCallbackAnswer_done(HashMap<String, Answer_done> value) {
-                answer_doneHashMap = value;
-                for (Answer_done item : answer_doneHashMap.values()) {
-                    answer_dones.add(item);
-                    Log.e("895","XXX " +item.getQuestion()+" ++ "+ item.getCorrect_ans()+" ++ "+item.getUser_ans() );
-                    if (item.getCorrect_ans().equals(item.getUser_ans())){
-                        score++;
-                        Log.e("895","SCORE: "+score+"");
-                    }
-                }
-            }
-        });
-    }
+
 
     private void closeKeyboard() {
         View view = this.getCurrentFocus();
