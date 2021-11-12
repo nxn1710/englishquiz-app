@@ -56,6 +56,12 @@ public class User {
         this.career = career;
     }
 
+    public User(User user) {
+    }
+
+
+
+
     public String getId() {
         return id;
     }

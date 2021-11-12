@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity {
     Button btn;
     TextView txtRegisterNow;
-    EditText edtEmail, edtPassword, edtRePassword;
+    EditText edtEmail, edtPassword;
     private FirebaseAuth mAuth;
 
 
@@ -38,7 +38,6 @@ public class SignInActivity extends AppCompatActivity {
         btn = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
-        edtRePassword = findViewById(R.id.edtRePassword);
 
         txtRegisterNow = findViewById(R.id.txtRegisterNow);
         Intent i = new Intent(this, MainActivity.class);
@@ -66,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
+                    "Please enter email!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -74,7 +73,7 @@ public class SignInActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
+                    "Please enter password!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -97,7 +96,7 @@ public class SignInActivity extends AppCompatActivity {
                                 } else {
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
-                                            "Login failed!!",
+                                            "Email or password incorrect!",
                                             Toast.LENGTH_LONG)
                                             .show();
                                 }
