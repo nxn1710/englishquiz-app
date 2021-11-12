@@ -239,7 +239,7 @@
                 android:id="@+id/userPosition"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="04"
+                android:text="__"
                 android:layout_weight="1"
                 />
 
@@ -270,14 +270,14 @@
                 android:id="@+id/userName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="NghiepNX"
+                android:text=""
                 android:layout_weight="4"/>
 
             <TextView
                 android:id="@+id/userScore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="340pt"
+                android:text="0pt"
                 android:textAlignment="center"
                 android:background="@drawable/score_boder_radius"
                 android:layout_weight="1"

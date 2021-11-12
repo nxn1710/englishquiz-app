@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.englishquiz.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.englishquiz.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -27,8 +29,13 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 200);
 
-
-        Intent i = new Intent(this, SignInActivity.class);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        Intent i;
+        if (mAuth.getCurrentUser() == null){
+            i = new Intent(this, SignInActivity.class);
+        }else{
+            i = new Intent(this, MainActivity.class);
+        }
 
         handler.postDelayed(new Runnable() {
             @Override
