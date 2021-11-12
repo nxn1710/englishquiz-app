@@ -266,6 +266,7 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="7dp"
                         android:text="@string/txt_cefr"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -280,6 +281,7 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="7dp"
                         android:text="@string/txt_ielts"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
                 </LinearLayout>
 

@@ -75,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
+                    "Please enter email!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -83,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             Toast.makeText(getApplicationContext(),
-                    "Email incorrect format!!",
+                    "Email incorrect format!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -91,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
+                    "Please enter password!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -99,14 +99,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(password.length() < 6){
             Toast.makeText(getApplicationContext(),
-                    "Password must be at least 6 characters!!",
+                    "Password must be at least 6 characters!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
         }
         if(TextUtils.isEmpty(rePassword)){
             Toast.makeText(getApplicationContext(),
-                    "Please enter retype password!!",
+                    "Please enter retype password!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -114,7 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(!rePassword.equals(password)){
             Toast.makeText(getApplicationContext(),
-                    "Retype password must be same password!!",
+                    "Retype password must be same password!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -142,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity {
                             // Registration failed
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Registration failed!!"
+                                    "Registration failed!"
                                             + " Please try again later",
                                     Toast.LENGTH_LONG)
                                     .show();

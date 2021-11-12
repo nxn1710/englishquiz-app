@@ -33,7 +33,8 @@ public class BaseDAO {
                     String score_max = snapshot.child("score_max").getValue().toString();
                     String certificate = snapshot.child("certificate").getValue().toString();
                     String type = snapshot.child("type").getValue().toString();
-                    bases.add(new Base(id, score_min, score_max, certificate, type));
+                    String ielts = snapshot.child("ielts").getValue().toString();
+                    bases.add(new Base(id, score_min, score_max, certificate, type, ielts));
                 }
                 myCallback.onCallBackBases(bases);
             }

@@ -39,6 +39,8 @@
         app:srcCompat="@drawable/ic_ellipse2" />
 
     <ScrollView
+        android:id="@+id/scrollView"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -49,43 +51,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/arrow_left" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:textColor="#FFFFFF"
-                    android:layout_weight="10"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:id="@+id/imgAvatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:layout_marginRight="30dp"
-                    android:src="@drawable/mask_group" />
-
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="334dp"
+                android:layout_marginTop="70dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -93,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif"
                     android:textColor="#FFFFFF"
                     android:textSize="35sp" />
@@ -167,8 +136,9 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
                         android:layout_marginLeft="60dp"
                         android:orientation="vertical">
 
@@ -193,9 +163,10 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="120dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -214,9 +185,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:fontFamily="sans-serif"
+                            android:text=""
                             android:textColor="#FFFFFF"
                             android:textSize="20sp" />
-
                     </LinearLayout>
 
                 </LinearLayout>
@@ -260,5 +231,6 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

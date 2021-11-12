@@ -1,30 +1,21 @@
 package com.englishquiz.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.englishquiz.DAO.UserDAO;
-import com.englishquiz.MainActivity;
 import com.englishquiz.R;
-import com.englishquiz.adapter.ViewPagerAdapterForQuestion;
 import com.englishquiz.callBacks.UserCallBack;
-import com.englishquiz.databinding.FragmentProfileBinding;
 import com.englishquiz.model.User;
-import com.englishquiz.ui.profile.ProfileFragment;
 
 import java.util.Objects;
 
@@ -32,7 +23,7 @@ public class EditProfileActivity extends AppCompatActivity {
     ImageView btn;
     Button btnFinish;
     EditText editTxtUsername, editTxtFirstname, editTxtLastname, editTxtNational, editTxtCareer;
-
+    User current_user = new User();
     UserDAO dao = new UserDAO();
     boolean flag;
 
@@ -53,12 +44,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 @Override
                 public void onCallbackUser(User user) {
                     if (user != null) {
-                        editTxtUsername.setText(user.getUsername());
-                        editTxtFirstname.setText(user.getFirst_name());
-                        editTxtLastname.setText(user.getLast_name());
-                        editTxtNational.setText(user.getNational());
-                        editTxtCareer.setText(user.getCareer());
+                        current_user = user;
                         flag = true;
+
                     } else {
                         flag = false;
                     }
@@ -67,6 +55,21 @@ public class EditProfileActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                editTxtUsername.setText(current_user.getUsername());
+                editTxtFirstname.setText(current_user.getFirst_name());
+                editTxtLastname.setText(current_user.getLast_name());
+                editTxtNational.setText(current_user.getNational());
+                editTxtCareer.setText(current_user.getCareer());
+                if(!TextUtils.isEmpty(editTxtUsername.getText().toString())){
+                    editTxtUsername.setSelection(editTxtUsername.getText().toString().length());
+                }
+            }
+        }, 100);
 
         btn = findViewById(R.id.btnBack);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -79,15 +82,23 @@ public class EditProfileActivity extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (TextUtils.isEmpty(editTxtUsername.getText().toString()) || TextUtils.isEmpty(editTxtFirstname.getText().toString())
+                        || TextUtils.isEmpty(editTxtLastname.getText().toString()) || TextUtils.isEmpty(editTxtNational.getText().toString())
+                        || TextUtils.isEmpty(editTxtCareer.getText().toString())) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please don't leave the field blank!",
+                            Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
 
                 if (flag == false) {
                     dao.addUserProfileFirstTime(new User(editTxtUsername.getText().toString(),
                             editTxtFirstname.getText().toString(),
                             editTxtLastname.getText().toString(), editTxtNational.getText().toString(),
                             editTxtCareer.getText().toString()));
-
-
                 } else {
+
                     try {
                         dao.getUser(new UserCallBack() {
                             @Override
@@ -107,11 +118,17 @@ public class EditProfileActivity extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), SignInActivity.class);
                     startActivity(i);
                 } else {
-                    onBackPressed();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            onBackPressed();
+                        }
+                    }, 300);
                 }
 
                 Toast.makeText(getApplicationContext(),
-                        "Update profile success!!",
+                        "Update profile success!",
                         Toast.LENGTH_LONG)
                         .show();
             }

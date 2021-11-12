@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.englishquiz.DAO.UserDAO;
+import com.englishquiz.R;
 import com.englishquiz.activities.AboutUsActivity;
 import com.englishquiz.activities.EditProfileActivity;
 import com.englishquiz.activities.SignInActivity;
@@ -30,11 +32,16 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     UserDAO userDao = new UserDAO();
-
+    User current_user = new User();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Log.e("TAG", "onCallbackUser: 12");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,34 +71,34 @@ public class ProfileFragment extends Fragment {
                 startActivity(i3);
             }
         });
-
         return root;
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
+        try {
+            userDao.getUser(new UserCallBack() {
+                @Override
+                public void onCallbackUser(User user) {
+                    current_user = user;
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    userDao.getUser(new UserCallBack() {
-                        @Override
-                        public void onCallbackUser(User user) {
-                            binding.txtFullname.setText(user.getLast_name() + " " + user.getFirst_name());
-                            binding.txtEmail.setText(user.getMail());
-                            binding.txtUsername.setText(user.getUsername());
-                            binding.txtAccount.setText(user.getUsername());
-                            binding.txtFullname5.setText(user.getNational());
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                binding.scrollView.setVisibility(View.VISIBLE);
+                binding.txtFullname.setText(current_user.getLast_name() + " " + current_user.getFirst_name());
+                binding.txtEmail.setText(current_user.getMail());
+                binding.txtUsername.setText(current_user.getUsername());
+                binding.txtFullname5.setText(current_user.getNational());
             }
-        }, 50);
+        }, 300);
+
     }
 
     @Override
