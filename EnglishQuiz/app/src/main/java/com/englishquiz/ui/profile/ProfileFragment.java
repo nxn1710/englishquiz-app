@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment {
         binding.btnAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i2.putExtra("userName",current_user.getUsername());
                 startActivity(i2);
             }
         });
