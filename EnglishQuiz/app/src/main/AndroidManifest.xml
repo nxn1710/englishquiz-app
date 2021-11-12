@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.englishquiz">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +24,7 @@
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.SignInActivity" />
         <activity android:name=".MainActivity" android:label="@string/app_name">
+
 
         </activity>
 

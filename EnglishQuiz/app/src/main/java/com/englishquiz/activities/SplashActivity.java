@@ -18,8 +18,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         bar = findViewById(R.id.progressBar);
-
-
         bar.setVisibility(View.VISIBLE);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -30,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         }, 200);
 
 
-        Intent i = new Intent(this, SignUpActivity.class);
+        Intent i = new Intent(this, SignInActivity.class);
 
         handler.postDelayed(new Runnable() {
             @Override

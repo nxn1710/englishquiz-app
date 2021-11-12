@@ -11,8 +11,8 @@
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="16.5dp"
+        android:layout_marginTop="-46dp"
+        android:layout_marginEnd="-25.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_ellipse3" />
@@ -38,18 +38,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_ellipse2" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-
-
     <ScrollView
+        android:id="@+id/scrollView"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -60,42 +51,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/arrow_left" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:text="@string/account_name"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:id="@+id/imgAvatar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginLeft="200dp"
-                    android:src="@drawable/mask_group" />
-
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="334dp"
+                android:layout_marginTop="70dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -103,9 +62,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif"
-                    android:text="@string/fullname"
                     android:textColor="#FFFFFF"
                     android:textSize="35sp" />
 
@@ -168,7 +126,6 @@
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="sans-serif"
-                    android:text="@string/emailname"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -179,8 +136,9 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
                         android:layout_marginLeft="60dp"
                         android:orientation="vertical">
 
@@ -200,15 +158,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:fontFamily="sans-serif"
-                            android:text="@string/username"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="70dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -227,10 +185,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:fontFamily="sans-serif"
-                            android:text="@string/national"
+                            android:text=""
                             android:textColor="#FFFFFF"
                             android:textSize="20sp" />
-
                     </LinearLayout>
 
                 </LinearLayout>
@@ -274,5 +231,6 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

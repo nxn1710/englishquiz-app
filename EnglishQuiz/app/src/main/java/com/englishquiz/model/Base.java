@@ -6,15 +6,9 @@ public class Base {
     private String score_max;
     private String certificate;
     private String type;
+    private String ielts;
 
     public Base() {
-    }
-
-    public Base(String score_min, String score_max, String certificate, String type) {
-        this.score_min = score_min;
-        this.score_max = score_max;
-        this.certificate = certificate;
-        this.type = type;
     }
 
     public Base(String id, String score_min, String score_max, String certificate, String type) {
@@ -23,6 +17,15 @@ public class Base {
         this.score_max = score_max;
         this.certificate = certificate;
         this.type = type;
+    }
+
+    public Base(String id, String score_min, String score_max, String certificate, String type, String ielts) {
+        this.id = id;
+        this.score_min = score_min;
+        this.score_max = score_max;
+        this.certificate = certificate;
+        this.type = type;
+        this.ielts = ielts;
     }
 
     public String getScore_min() {
@@ -63,6 +66,14 @@ public class Base {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIelts() {
+        return ielts;
+    }
+
+    public void setIelts(String ielts) {
+        this.ielts = ielts;
     }
 
     @Override

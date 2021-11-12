@@ -52,7 +52,6 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/hi_thuan"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp" />
 
@@ -130,7 +129,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="35dp"
-                            android:text="@string/score"
                             android:textSize="24sp"
                             app:layout_constraintBottom_toBottomOf="@+id/medal"
                             app:layout_constraintEnd_toEndOf="@+id/medal"
@@ -268,6 +266,7 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="7dp"
                         android:text="@string/txt_cefr"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -282,6 +281,7 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="7dp"
                         android:text="@string/txt_ielts"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
