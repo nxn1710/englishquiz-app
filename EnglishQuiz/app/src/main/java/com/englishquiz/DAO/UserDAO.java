@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.englishquiz.callBacks.UserCallBack;
+import com.englishquiz.callBacks.UsersCallBack;
 import com.englishquiz.constant.Constant;
 import com.englishquiz.model.Exercise;
 import com.englishquiz.model.User;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 public class UserDAO {
@@ -26,6 +29,7 @@ public class UserDAO {
     User user;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference(new Constant().DATABASE);
+    List<User> userList = new ArrayList<>();
 
     public UserDAO() {
     }
@@ -91,5 +95,32 @@ public class UserDAO {
         );
     }
 
+    public void getUsers(UsersCallBack myCallback) throws InterruptedException {
+        try{
+            myRef.child("User").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String id = snapshot.child("id").getValue().toString();
+                        String username = snapshot.child("username").getValue().toString();
+                        String mail = snapshot.child("mail").getValue().toString();
+                        String score_max = snapshot.child("score_max").getValue().toString();
+                        String first_name = snapshot.child("first_name").getValue().toString();
+                        String last_name = snapshot.child("last_name").getValue().toString();
+                        String national = snapshot.child("national").getValue().toString();
+                        String career = snapshot.child("career").getValue().toString();
+                        user = new User(id, username, mail, score_max, first_name, last_name, national, career);
+                        userList.add(user);
+                    }
+                    myCallback.onCallbackUsers(userList);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }catch (Exception e){
+
+        }
+    }
 
 }

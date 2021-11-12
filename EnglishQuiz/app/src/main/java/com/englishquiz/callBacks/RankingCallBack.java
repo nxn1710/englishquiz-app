@@ -5,7 +5,8 @@ import com.englishquiz.model.Ranking;
 import com.englishquiz.model.User;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface RankingCallBack {
-    void onCallbackRanking(HashMap<String, Ranking> value);
+    void onGetTop8(List<Ranking> value);
 }

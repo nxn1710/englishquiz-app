@@ -16,36 +16,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class RankingDAO {
 
-    HashMap<String, Ranking> rankingHashMap = new HashMap<>();
+    List<Ranking> rankingList = new ArrayList<>();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference(new Constant().DATABASE);
+    Ranking ranking = new Ranking();
 
     public RankingDAO() {
 
     }
 
-    public HashMap<String, Ranking> getRankingHashMap() {
-        return rankingHashMap;
-    }
 
-    public void getRanking(RankingCallBack myCallback) throws InterruptedException {
+    public void getTop8(RankingCallBack myCallback) throws InterruptedException {
         myRef.child("Ranking").orderByChild("position").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("E", "onDataChange: " + dataSnapshot.getChildrenCount() );
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String id = snapshot.child("id").getValue().toString();
                     String user = snapshot.child("user").getValue().toString();
                     String position = snapshot.child("position").getValue().toString();
                     String score = snapshot.child("score").getValue().toString();
                     Ranking e = new Ranking(id, user, position, score);
-                    rankingHashMap.put(id,e);
+                    rankingList.add(e);
                 }
-                myCallback.onCallbackRanking(rankingHashMap);
+                myCallback.onGetTop8(rankingList);
             }
 
             @Override
