@@ -40,7 +40,6 @@ import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
     Button btnNext;
-    ImageView btnCancel;
     FirebaseDatabase database;
     DatabaseReference myRef;
     private ArrayList<Answer> answers = new ArrayList<>();
@@ -61,7 +60,6 @@ public class QuizActivity extends AppCompatActivity {
         getData();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         btnNext = findViewById(R.id.btn_next);
-        btnCancel = findViewById(R.id.icon_cancel);
         viewPagerQuestions = findViewById(R.id.viewpager_questions);
         loadQuestionBar = findViewById(R.id.load_questioin_bar);
         action();
@@ -107,13 +105,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         });
-        Intent i = new Intent(this, MainActivity.class);
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(i);
-            }
-        });
+
 
     }
     private void getData(){

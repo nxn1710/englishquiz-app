@@ -11,15 +11,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.englishquiz.DAO.Answer_DoneDAO;
+import com.englishquiz.DAO.QuestionDAO;
+import com.englishquiz.DAO.RankingDAO;
 import com.englishquiz.DAO.UserDAO;
 import com.englishquiz.MainActivity;
 import com.englishquiz.R;
 import com.englishquiz.callBacks.Answer_doneCallBack;
+import com.englishquiz.callBacks.QuestionCallBack;
+import com.englishquiz.callBacks.RankingCallBack;
+import com.englishquiz.model.Answer;
 import com.englishquiz.model.Answer_done;
+import com.englishquiz.model.Exercise;
+import com.englishquiz.model.Question;
+import com.englishquiz.model.Ranking;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class QuizResultActivity extends AppCompatActivity {
     CardView btnHome, btnReview, btnTestAgain;
@@ -92,6 +101,8 @@ public class QuizResultActivity extends AppCompatActivity {
                 }
                 UserDAO dao = new UserDAO();
                 dao.addScore(score);
+                RankingDAO rankingDAO = new RankingDAO();
+
                 Integer total = answer_doneHashMap.size();
                 String point = score*10+"";
                 String completation = (int)(score*100/(float)total) + "%";
@@ -103,4 +114,5 @@ public class QuizResultActivity extends AppCompatActivity {
             }
         });
     }
+
 }

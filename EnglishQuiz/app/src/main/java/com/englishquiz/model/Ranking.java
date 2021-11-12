@@ -22,6 +22,14 @@ public class Ranking {
         this.score = score;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUser() {
         return user;
     }
@@ -49,7 +57,8 @@ public class Ranking {
     @Override
     public String toString() {
         return "Ranking{" +
-                "user=" + user +
+                "id='" + id + '\'' +
+                ", user='" + user + '\'' +
                 ", position='" + position + '\'' +
                 ", score='" + score + '\'' +
                 '}';

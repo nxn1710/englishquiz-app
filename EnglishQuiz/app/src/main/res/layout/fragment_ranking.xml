@@ -12,61 +12,20 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+             >
 
-
-    <ImageView
-        android:id="@+id/btnBack"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/arrow_left" />
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:orientation="horizontal"
-        android:weightSum="5">
-
-        <TextView
-            android:id="@+id/rankByWeek"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Week"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/rankByMonth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Month"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/rankByAll"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="All Times"
-            android:textColor="@color/white"
-
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
         android:orientation="horizontal"
         >
@@ -94,12 +53,13 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
+                    android:foreground="#bdc3c7"
+
                     />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/nameTop2"
+                android:id="@+id/top2Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -136,11 +96,11 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
+                    android:foreground="#f1c40f"
                     />
             </androidx.cardview.widget.CardView>
             <TextView
-                android:id="@+id/nameTop1"
+                android:id="@+id/top1Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,6 +109,7 @@
                 android:textSize="15dp"
                 android:textColor="@color/white"/>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,12 +134,12 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
+                    android:foreground="#e77f67"
                     />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/nameTop3"
+                android:id="@+id/top3Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -211,6 +172,7 @@
             android:layout_marginBottom="25dp"
             >
             <TextView
+                android:id="@+id/top2Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="340pt"
@@ -219,6 +181,7 @@
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/top1Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="340pt"
@@ -227,13 +190,13 @@
                 android:textAlignment="center"
                 />
             <TextView
+                android:id="@+id/top3Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="340pt"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
                 />
         </LinearLayout>
     </RelativeLayout>
@@ -250,289 +213,13 @@
         android:layout_marginEnd="10dp"
         android:paddingEnd="10dp"
         >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <TextView
-                android:id="@+id/top4Text"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rankingTopView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="04"
-                />
+                tools:ignore="MissingConstraints">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/avatarTop4"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nameTop4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
-
-            <TextView
-                android:id="@+id/scoreTop4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="340pt"
-                android:textAlignment="center"
-                android:background="@drawable/score_boder_radius"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <TextView
-                android:id="@+id/top5Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="05"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/avatarTop5"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nameTop5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
-
-            <TextView
-                android:id="@+id/scoreTop5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="340pt"
-                android:textAlignment="center"
-                android:background="@drawable/score_boder_radius"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <TextView
-                android:id="@+id/top6Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="06"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/avatarTop6"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nameTop6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
-
-            <TextView
-                android:id="@+id/scoreTop6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="340pt"
-                android:textAlignment="center"
-                android:background="@drawable/score_boder_radius"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <TextView
-                android:id="@+id/top7Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="07"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/avatarTop7"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nameTop7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
-
-            <TextView
-                android:id="@+id/scoreTop7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="340pt"
-                android:textAlignment="center"
-                android:background="@drawable/score_boder_radius"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <TextView
-                android:id="@+id/top8Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="08"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/avatarTop8"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nameTop8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
-
-            <TextView
-                android:id="@+id/scoreTop8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="340pt"
-                android:textAlignment="center"
-                android:background="@drawable/score_boder_radius"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                />
-
-        </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -542,48 +229,53 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="4"
+            android:weightSum="6"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="15dp"
             >
 
             <TextView
-                android:id="@+id/topUser"
-                android:layout_width="wrap_content"
+                android:id="@+id/userPosition"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="11"
+                android:text="04"
+                android:layout_weight="1"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                app:cardCornerRadius="20dp"
-                android:layout_marginHorizontal="20dp"
-                >
 
-                <ImageView
-                    android:id="@+id/avatarTopUser"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars"
-                    />
-            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/nameTopUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HungNQ"
-                android:layout_weight="2"/>
+            <!--<androidx.cardview.widget.CardView-->
+            <!--    android:layout_width="wrap_content"-->
+            <!--    android:layout_height="wrap_content"-->
+            <!--    android:layout_centerInParent="true"-->
+            <!--    android:innerRadius="0dp"-->
+            <!--    android:shape="ring"-->
+            <!--    app:cardCornerRadius="20dp"-->
+            <!--    android:layout_marginHorizontal="20dp"-->
+            <!--    >-->
+
+            <!--   -->
+
+            <!--        <ImageView-->
+            <!--        android:id="@+id/avatarTop4"-->
+            <!--        android:layout_width="40dp"-->
+            <!--        android:layout_height="40dp"-->
+            <!--        android:layout_gravity="center"-->
+            <!--        tools:src="@tools:sample/lorem/random"-->
+            <!--        />-->
+            <!--</androidx.cardview.widget.CardView>-->
 
             <TextView
-                android:id="@+id/scoreTopUser"
-                android:layout_width="wrap_content"
+                android:id="@+id/userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="NghiepNX"
+                android:layout_weight="4"/>
+
+            <TextView
+                android:id="@+id/userScore"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="340pt"
                 android:textAlignment="center"
@@ -591,6 +283,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 />
+
 
         </LinearLayout>
 
