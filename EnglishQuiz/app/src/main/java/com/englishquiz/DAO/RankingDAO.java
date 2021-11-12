@@ -33,7 +33,7 @@ public class RankingDAO {
 
 
     public void getTop8(RankingCallBack myCallback) throws InterruptedException {
-        myRef.child("Ranking").orderByChild("position").addValueEventListener(new ValueEventListener() {
+        myRef.child("Ranking").orderByChild("position").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -52,4 +52,21 @@ public class RankingDAO {
             }
         });
     }
+
+    public void updateRanking(Ranking ranking){
+        myRef.child("Ranking").child(ranking.getUser()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myRef.child("Ranking").child(ranking.getUser()+"").setValue(ranking);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+
 }

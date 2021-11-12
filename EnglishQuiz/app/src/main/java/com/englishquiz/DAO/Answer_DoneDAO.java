@@ -1,11 +1,14 @@
 package com.englishquiz.DAO;
 
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.englishquiz.activities.SignInActivity;
 import com.englishquiz.callBacks.Answer_doneCallBack;
 import com.englishquiz.model.Answer_done;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +20,8 @@ import java.util.HashMap;
 public class Answer_DoneDAO {
     public Answer_DoneDAO() {
     }
-    String UserID = "1";
+
+    String UserID=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     Boolean done=false;
     HashMap<String, Answer_done> answer_doneHashMap = new HashMap<>();
     public void getAnswer_done( Answer_doneCallBack myCallback) {
