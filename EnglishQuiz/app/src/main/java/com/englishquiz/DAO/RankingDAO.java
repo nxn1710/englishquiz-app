@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,13 +39,27 @@ public class RankingDAO {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+
                     String id = snapshot.child("id").getValue().toString();
                     String user = snapshot.child("user").getValue().toString();
                     String position = snapshot.child("position").getValue().toString();
                     String score = snapshot.child("score").getValue().toString();
                     Ranking e = new Ranking(id, user, position, score);
+
+
                     rankingList.add(e);
                 }
+
+
+                Collections.sort(rankingList, new Comparator<Ranking>() {
+                    @Override
+                    public int compare(Ranking o1, Ranking o2) {
+                        return Integer.compare(Integer.parseInt(o1.getPosition()),
+                                Integer.parseInt(o2.getPosition()));
+                    }
+                });
+
                 myCallback.onGetTop8(rankingList);
             }
 
