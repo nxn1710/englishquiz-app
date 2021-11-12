@@ -73,7 +73,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView11">
+                app:layout_constraintTop_toTopOf="@+id/txtTotal">
 
                 <TextView
                     android:id="@+id/txtEmail"

@@ -155,7 +155,7 @@
                                 android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView16"
+                                android:id="@+id/txtCompletation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100%"
@@ -169,7 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Completation"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
+                                android:textSize="17dp" />
 
                             </LinearLayout>
 
@@ -180,7 +180,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView18"
+                                    android:id="@+id/txtCorrect"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="25"
@@ -194,7 +194,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Correct"
                                     android:textColor="#000000"
-                                    android:textSize="20dp" />
+                                    android:textSize="17dp" />
 
                             </LinearLayout>
 
@@ -214,7 +214,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView11"
+                                    android:id="@+id/txtTotal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="40"
@@ -228,7 +228,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Total Question"
                                     android:textColor="#000000"
-                                    android:textSize="20dp" />
+                                    android:textSize="17dp" />
 
                             </LinearLayout>
 
@@ -239,7 +239,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView13"
+                                    android:id="@+id/txtWrong"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="15"
@@ -253,7 +253,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Wrong"
                                     android:textColor="#000000"
-                                    android:textSize="20dp" />
+                                    android:textSize="17dp" />
 
                             </LinearLayout>
 
@@ -269,7 +269,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="100dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -278,9 +278,10 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
@@ -310,14 +311,15 @@
                         android:layout_height="wrap_content"
                         android:text="Home"
                         android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="28dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
@@ -343,27 +345,28 @@
                         android:id="@+id/textView21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Review Answer"
+                        android:text="Review"
                         android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="28dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnTestAgain"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
                         android:innerRadius="0dp"
                         android:shape="ring"
-                        app:cardCornerRadius="25dp"
-                        >
+                        app:cardCornerRadius="25dp">
 
                         <ImageView
                             android:id="@+id/logoTestAgain"
@@ -371,8 +374,7 @@
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:background="@color/white"
-                            android:src="@drawable/refresh1"
-                            />
+                            android:src="@drawable/refresh1" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -381,123 +383,7 @@
                         android:layout_height="wrap_content"
                         android:text="Test Again"
                         android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:innerRadius="0dp"
-                        android:shape="ring"
-                        app:cardCornerRadius="25dp"
-                        >
-
-                        <ImageView
-                            android:id="@+id/logoProfile"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:background="@color/white"
-                            android:src="@drawable/user1"
-                            />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Profile"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="56dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:innerRadius="0dp"
-                        android:shape="ring"
-                        app:cardCornerRadius="25dp"
-                        >
-
-                        <ImageView
-                            android:id="@+id/logoRanking"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:background="@color/white"
-                            android:src="@drawable/podium2"
-                            />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/textView24"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ranking"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="56dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:innerRadius="0dp"
-                        android:shape="ring"
-                        app:cardCornerRadius="25dp"
-                        >
-
-                        <ImageView
-                            android:id="@+id/logoShareScore"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:background="@color/white"
-                            android:src="@drawable/share1"
-                            />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/textView25"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Share Score"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
                 </LinearLayout>
 

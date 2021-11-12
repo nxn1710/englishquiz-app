@@ -23,7 +23,21 @@
         android:layout_height="match_parent"
         android:text="Finish Quiz"
         android:visibility="gone" />
-
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_rectangle_2"
+        android:letterSpacing="0.1"
+        android:text="NEXT QUESTION"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
