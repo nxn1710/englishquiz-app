@@ -74,11 +74,12 @@ public class RankingFragment extends Fragment {
                 @Override
                 public void onGetTop8(List<Ranking> rankingResponse) {
 
+                    binding.userName.setText("" + getFullName(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
+
                     for (Ranking ranking : rankingResponse) {
                         if (ranking.getUser().equals(FirebaseAuth.getInstance().getCurrentUser().getDisplayName())) {
                             binding.userPosition.setText("" + ranking.getPosition());
                             binding.userScore.setText("" + ranking.getScore() + "pt");
-                            binding.userName.setText("" + getFullName(ranking.getUser()));
                         }
                         Log.e("RANKING", ranking.toString() + "");
                     }
