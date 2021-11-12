@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.englishquiz.DAO.Answer_DoneDAO;
+import com.englishquiz.DAO.UserDAO;
 import com.englishquiz.MainActivity;
 import com.englishquiz.R;
 import com.englishquiz.callBacks.Answer_doneCallBack;
 import com.englishquiz.model.Answer_done;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,8 +25,10 @@ public class QuizResultActivity extends AppCompatActivity {
     CardView btnHome, btnReview, btnTestAgain;
     TextView txtScore, txtCompletation, txtTotal, txtCorrect, txtWrong;
     Integer score=0;
+    String UserID=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     private ArrayList<Answer_done> answer_dones = new ArrayList<>();
     private HashMap<String,Answer_done> answer_doneHashMap = new HashMap<>();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,7 @@ public class QuizResultActivity extends AppCompatActivity {
         init();
         action();
         getdata();
+        Intent i;
     }
     public void init(){
         txtScore = findViewById(R.id.txtScore);
@@ -85,6 +90,8 @@ public class QuizResultActivity extends AppCompatActivity {
                         Log.e("895","SCORE: "+score+"");
                     }
                 }
+                UserDAO dao = new UserDAO();
+                dao.addScore(score);
                 Integer total = answer_doneHashMap.size();
                 String point = score*10+"";
                 String completation = (int)(score*100/(float)total) + "%";

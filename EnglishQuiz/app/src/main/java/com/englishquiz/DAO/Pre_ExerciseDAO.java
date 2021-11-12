@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.englishquiz.callBacks.Pre_ExerciseCallBack;
 import com.englishquiz.model.Answer_done;
 import com.englishquiz.model.Pre_Exercise;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 
 public class Pre_ExerciseDAO {
     Boolean done=false;
-    String UserID="1";
+    String UserID=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     public Pre_ExerciseDAO() {
     }
     HashMap<String, Pre_Exercise> exercises = new HashMap<>();

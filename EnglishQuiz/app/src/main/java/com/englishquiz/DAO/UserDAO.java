@@ -91,5 +91,26 @@ public class UserDAO {
         );
     }
 
+    public void addScore(Integer score){
+        String UserID=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        myRef = myRef.child("User").child(UserID).child("score_max");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.e("895","data"+snapshot);
+                Log.e("895","max"+snapshot.getValue().toString());
+                Integer max = Integer.parseInt(snapshot.getValue().toString());
+                if (max<score){
+                    myRef.setValue(score+"");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 }

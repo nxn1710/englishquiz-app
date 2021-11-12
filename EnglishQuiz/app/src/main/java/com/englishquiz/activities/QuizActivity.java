@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.englishquiz.DAO.AnswerDAO;
@@ -19,6 +20,7 @@ import com.englishquiz.DAO.Answer_DoneDAO;
 import com.englishquiz.DAO.ExerciseDAO;
 import com.englishquiz.DAO.Pre_ExerciseDAO;
 import com.englishquiz.DAO.QuestionDAO;
+import com.englishquiz.MainActivity;
 import com.englishquiz.adapter.ViewPagerAdapterForQuestion;
 import com.englishquiz.callBacks.AnswerCallBack;
 import com.englishquiz.callBacks.Answer_doneCallBack;
@@ -26,6 +28,7 @@ import com.englishquiz.callBacks.ExerciseCallBack;
 import com.englishquiz.callBacks.QuestionCallBack;
 import com.englishquiz.model.*;
 import com.englishquiz.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +40,7 @@ import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
     Button btnNext;
+    ImageView btnCancel;
     FirebaseDatabase database;
     DatabaseReference myRef;
     private ArrayList<Answer> answers = new ArrayList<>();
@@ -48,14 +52,16 @@ public class QuizActivity extends AppCompatActivity {
     private ViewPager2 viewPagerQuestions;
     private ProgressBar loadQuestionBar;
     String TAG = "895";
-    String UserID="1";
+    String UserID=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     Boolean submit=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         getData();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         btnNext = findViewById(R.id.btn_next);
+        btnCancel = findViewById(R.id.icon_cancel);
         viewPagerQuestions = findViewById(R.id.viewpager_questions);
         loadQuestionBar = findViewById(R.id.load_questioin_bar);
         action();
@@ -99,6 +105,13 @@ public class QuizActivity extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(),QuizResultActivity.class);
                     startActivity(i);
                 }
+            }
+        });
+        Intent i = new Intent(this, MainActivity.class);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(i);
             }
         });
 
