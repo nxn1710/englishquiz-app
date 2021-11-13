@@ -3,6 +3,7 @@ package com.englishquiz.DAO;
 import androidx.annotation.NonNull;
 
 import com.englishquiz.callBacks.Pre_ExerciseCallBack;
+import com.englishquiz.constant.Constant;
 import com.englishquiz.model.Answer_done;
 import com.englishquiz.model.Pre_Exercise;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,7 @@ public class Pre_ExerciseDAO {
     HashMap<String, Pre_Exercise> exercises = new HashMap<>();
     public void getPre_Exercise( Pre_ExerciseCallBack myCallback) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("TestWeb");
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE);
         myRef.child("Pre_Exercise").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -44,7 +45,7 @@ public class Pre_ExerciseDAO {
 
     public void addPre_Exercise( Pre_Exercise ans){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("TestNgu");
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE);
         myRef.child("Pre_Exercise").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

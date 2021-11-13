@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.englishquiz.callBacks.ExerciseCallBack;
 import com.englishquiz.callBacks.QuestionCallBack;
+import com.englishquiz.constant.Constant;
 import com.englishquiz.model.Exercise;
 import com.englishquiz.model.Question;
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +21,7 @@ public class QuestionDAO {
     HashMap<String, Question> questionHashMap = new HashMap<>();
     public void getQuestion( QuestionCallBack myCallback) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Master");
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE);
         myRef.child("Question").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

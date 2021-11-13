@@ -100,7 +100,7 @@ public class QuizResultActivity extends AppCompatActivity {
                     }
                 }
                 UserDAO dao = new UserDAO();
-                dao.addScore(score);
+                dao.addScore(score*10);
                 RankingDAO rankingDAO = new RankingDAO();
 
                 Integer total = answer_doneHashMap.size();
