@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.englishquiz.activities.SignInActivity;
 import com.englishquiz.callBacks.Answer_doneCallBack;
+import com.englishquiz.constant.Constant;
 import com.englishquiz.model.Answer_done;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +27,7 @@ public class Answer_DoneDAO {
     HashMap<String, Answer_done> answer_doneHashMap = new HashMap<>();
     public void getAnswer_done( Answer_doneCallBack myCallback) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("TestNgu");
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE);
         myRef.child("Answer_done").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -51,13 +52,12 @@ public class Answer_DoneDAO {
     public void addAnswer_done( Answer_done ans, String index, boolean start){
         done = start;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("TestNgu").child("Answer_done").child(UserID).child(index);
+        DatabaseReference myRef = database.getReference(new Constant().DATABASE).child("Answer_done").child(UserID).child(index);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!done)
                 {
-                    //Log.e("895","up"+ans.toString());
                     ans.setId(index);
                     myRef.setValue(ans);
                     done=true;
